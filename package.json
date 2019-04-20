@@ -54,7 +54,6 @@
     "node": ">= 0.10.0"
   },
   "scripts": {
-    "test": "make test",
     "build": "pack build",
     "prerelease": "npm run build",
     "release": "pack publish"
@@ -77,6 +76,14 @@
       ],
       [
         "@pika/plugin-build-types"
+      ],
+      [
+        "@pika/plugin-copy-assets",
+        {
+          "files": [
+            "bin"
+          ]
+        }
       ]
     ]
   },
@@ -89,6 +96,8 @@
     "@pika/plugin-build-node": "^0.3.14",
     "@pika/plugin-build-types": "^0.3.16",
     "@pika/plugin-build-web": "^0.3.14",
+    "@pika/plugin-copy-assets": "^0.3.14",
+    "@pika/plugin-simple-bin": "^0.3.14",
     "@pika/plugin-standard-pkg": "^0.3.14",
     "ansi": "^0.3.0",
     "benchmark": "^1.0.0",
