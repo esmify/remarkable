@@ -18,3 +18,5 @@ vendor
 temp
 tmp
 TODO.md
+pkg/
+yarn.lock

@@ -1,5 +1,5 @@
 {
-  "name": "remarkable",
+  "name": "@esmify/remarkable",
   "description": "Markdown parser, done right. 100% Commonmark support, extensions, syntax plugins, high speed - all in one.",
   "version": "1.7.0",
   "homepage": "https://github.com/jonschlinkert/remarkable",
@@ -49,19 +49,47 @@
     "index.js",
     "lib"
   ],
-  "main": "index.js",
   "bin": "./bin/remarkable.js",
   "engines": {
     "node": ">= 0.10.0"
   },
   "scripts": {
-    "test": "make test"
+    "test": "make test",
+    "build": "pack build",
+    "prerelease": "npm run build",
+    "release": "pack publish"
+  },
+  "@pika/pack": {
+    "pipeline": [
+      [
+        "@pika/plugin-standard-pkg",
+        {
+          "exclude": [
+            "test/**/*"
+          ]
+        }
+      ],
+      [
+        "@pika/plugin-build-node"
+      ],
+      [
+        "@pika/plugin-build-web"
+      ],
+      [
+        "@pika/plugin-build-types"
+      ]
+    ]
   },
   "dependencies": {
     "argparse": "~0.1.15",
     "autolinker": "~0.28.0"
   },
   "devDependencies": {
+    "@pika/pack": "^0.3.7",
+    "@pika/plugin-build-node": "^0.3.14",
+    "@pika/plugin-build-types": "^0.3.16",
+    "@pika/plugin-build-web": "^0.3.14",
+    "@pika/plugin-standard-pkg": "^0.3.14",
     "ansi": "^0.3.0",
     "benchmark": "^1.0.0",
     "commonmark": "0.12.0",
